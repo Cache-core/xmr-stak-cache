@@ -504,7 +504,7 @@ __launch_bounds__(XMR_STAK_THREADS * 4)
 	uint32_t t1[2], t2[2], res;
 
 	float conc_var;
-	if(ALGO == cryptonight_conceal || ALGO == cryptonight_cache_hash)
+	if((ALGO == cryptonight_conceal) || (ALGO == cryptonight_cache_hash))
 	{
 		if(partidx != 0)
 			conc_var = int_as_float(*(d_ctx_b + threads * 4 + thread * 4 + sub));
@@ -576,7 +576,7 @@ __launch_bounds__(XMR_STAK_THREADS * 4)
 			{
 				uint32_t x_0 = loadGlobal32<uint32_t>(long_state + j);
 
-				if(ALGO == cryptonight_conceal || ALGO == cryptonight_cache_hash)
+				if((ALGO == cryptonight_conceal) || (ALGO == cryptonight_cache_hash))
 				{
 					float r = int2float((int32_t)x_0);
 					float c_old = conc_var;
@@ -692,7 +692,7 @@ __launch_bounds__(XMR_STAK_THREADS * 4)
 		if(ALGO == cryptonight_heavy || ALGO == cryptonight_haven || ALGO == cryptonight_bittube2 || ALGO == cryptonight_superfast)
 			if(sub & 1)
 				*(d_ctx_b + threads * 4 + thread) = idx0;
-		if(ALGO == cryptonight_conceal || ALGO == cryptonight_cache_hash)
+		if((ALGO == cryptonight_conceal) || (ALGO == cryptonight_cache_hash))
 			*(d_ctx_b + threads * 4 + thread * 4 + sub) = float_as_int(conc_var);
 	}
 }
